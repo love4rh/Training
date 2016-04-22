@@ -7,7 +7,8 @@ class ExpNumber
 {
 public:
 	ExpNumber() : _d(0), _r(0) {}
-	ExpNumber(int d, int r) : _d(d), _r(r) {}
+	ExpNumber(long long n) : _d(n / _exp), _r(n % _exp) {}
+	ExpNumber(long long d, long long r) : _d(d), _r(r) {}
 	ExpNumber(const ExpNumber& cp) : _d(cp._d), _r(cp._r) {}
 
 	ExpNumber& operator=(const ExpNumber& rhs)
@@ -21,18 +22,18 @@ public:
 		return *this;
 	}
 
-private:
 	static const int _exp = 1000000007;
 
+private:
 	// _exp·Î ³ª´« ¸ò
-	int _d;
+	long long _d;
 
 	// _exp·Î ³ª´« ³ª¸ÓÁö
-	int _r;
+	long long _r;
 
 public:
-	int d() const { return _d; }
-	int r() const { return _r; }
+	long long d() const { return _d; }
+	long long r() const { return _r; }
 
 	ExpNumber& operator-(const ExpNumber& rhs)
 	{
@@ -58,6 +59,26 @@ public:
 			_d += 1;
 			_r -= _exp;
 		}
+
+		return *this;
+	}
+
+	ExpNumber& operator*(const ExpNumber& rhs)
+	{
+		long long multipleR = _r * rhs._r;
+
+		_d = _exp * _d * rhs._d + _d * rhs._r + _r * rhs._d + multipleR / _exp;
+		_r = multipleR % _exp;
+
+		return *this;
+	}
+
+	ExpNumber& operator*(int rhs)
+	{
+		long long multipleR = _r * rhs;
+
+		_d *= rhs + multipleR / _exp;;
+		_r = multipleR % _exp;
 
 		return *this;
 	}
