@@ -54,7 +54,7 @@ int main(int argc, char* argv[])
 			for (x = 0; x < n; ++x)
 				in >> board[y][x];
 
-		// ³¡Á¡¿¡¼­
+		// ëì ì—ì„œ
 		cout << (nav(n - 1, n - 1) ? "YES" : "NO") << "\n";
 	}
 

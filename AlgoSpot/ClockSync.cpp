@@ -10,10 +10,10 @@ using namespace std;
 //istream& in = cin;
 ifstream in("E:\\Work\\Algorithm\\data\\clockSync.txt");
 
-// °¢ ½Ã°èº° ¹Ù´Ã À§Ä¡(12, 3, 6, 9)
+// ê° ì‹œê³„ë³„ ë°”ëŠ˜ ìœ„ì¹˜(12, 3, 6, 9)
 int clockPos[16];
 
-// ½ºÀ§Ä¡º° ¿¬°áµÈ ½Ã°èÁ¤º¸
+// ìŠ¤ìœ„ì¹˜ë³„ ì—°ê²°ëœ ì‹œê³„ì •ë³´
 int clockSwitch[10][6] =
 { { 0, 1, 2, -1 }
 , { 3, 7, 9, 11, -1 }
@@ -40,8 +40,8 @@ bool isAllAt12()
 	return true;
 }
 
-// ½ºÀ§Ä¡ s¸¦ ´­·¶À» ¶§ ¹Ù´Ã À§Ä¡ º¯°æ.
-// 4¹ø ´­·¯¼­ ¿ø·¡´ë·Î µ¹¾Æ¿Â °æ¿ì¶ó¸é false ¹ÝÈ¯
+// ìŠ¤ìœ„ì¹˜ së¥¼ ëˆŒë €ì„ ë•Œ ë°”ëŠ˜ ìœ„ì¹˜ ë³€ê²½.
+// 4ë²ˆ ëˆŒëŸ¬ì„œ ì›ëž˜ëŒ€ë¡œ ëŒì•„ì˜¨ ê²½ìš°ë¼ë©´ false ë°˜í™˜
 bool pressSwitch(int s)
 {
 	for (int i = 0; clockSwitch[s][i] != -1 && i < 6; ++i)
@@ -77,7 +77,7 @@ int main(int argc, char* argv[])
 		for(int i = 0; i < 16; ++i)
 			in >> clockPos[i];
 
-		// ½ºÀ§Ä¡´ç ÃÖ´ë 0 ~ 3¹ø±îÁö ´©¸¦ ¼ö ÀÖÀ½. 4^10 °¡Áö °æ¿ìÀÇ ¼ö Á¸Àç.
+		// ìŠ¤ìœ„ì¹˜ë‹¹ ìµœëŒ€ 0 ~ 3ë²ˆê¹Œì§€ ëˆ„ë¥¼ ìˆ˜ ìžˆìŒ. 4^10 ê°€ì§€ ê²½ìš°ì˜ ìˆ˜ ì¡´ìž¬.
 		for (int i = 0; i < 10; ++i)
 			pressCnt[i] = 0;
 

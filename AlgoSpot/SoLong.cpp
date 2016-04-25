@@ -39,7 +39,7 @@ public:
 
 		if (++pos < (int)str.length())
 			child->addString(str, pos, typeCnt);
-		// ³¡±îÁö ¿Ô´Ù¸é Typing Count ¼³Á¤
+		// ëê¹Œì§€ ì™”ë‹¤ë©´ Typing Count ì„¤ì •
 		else
 			child->_typeCnt = min(typeCnt + 1, (int)str.length());
 	}
@@ -80,7 +80,7 @@ int main(int argc, char* argv[])
 	{
 		in >> dictNum >> wordNum;
 
-		// »çÀü ÀĞ±â
+		// ì‚¬ì „ ì½ê¸°
 		int weight;
 		string word;
 		vector<pair<int, string>> dict;
@@ -91,17 +91,17 @@ int main(int argc, char* argv[])
 			dict.push_back(pair<int, string>(-weight, word));
 		}
 
-		// Å¸ÀÔÇÎ È¸¼ö °è»êÀ» À§ÇÑ Á¤·Ä.
+		// íƒ€ì…í•‘ íšŒìˆ˜ ê³„ì‚°ì„ ìœ„í•œ ì •ë ¬.
 		std::sort(dict.begin(), dict.end());
 
-		// °Ë»ö Tree ±¸¼º
+		// ê²€ìƒ‰ Tree êµ¬ì„±
 		Node* rootNode = new Node();
 		for (vector<pair<int, string>>::iterator it = dict.begin(); it != dict.end(); ++it)
 		{
 			rootNode->addString(it->second, 0, 1);
 		}
 
-		int totalPress = wordNum - 1;	//< Áß°£ °ø¹éÀº ¹Ì¸® °è»ê
+		int totalPress = wordNum - 1;	//< ì¤‘ê°„ ê³µë°±ì€ ë¯¸ë¦¬ ê³„ì‚°
 		while (wordNum--)
 		{
 			in >> word;

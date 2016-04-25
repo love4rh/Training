@@ -22,7 +22,7 @@ using namespace std;
 istream& in = cin;
 
 
-// map¿¡ ÀÖ´Â °³¼ö Áß È¦¼öÀÎ °ÍÀ» Ã£¾Æ ¹İÈ¯ÇÔ.
+// mapì— ìˆëŠ” ê°œìˆ˜ ì¤‘ í™€ìˆ˜ì¸ ê²ƒì„ ì°¾ì•„ ë°˜í™˜í•¨.
 int getOddCountNum(const map<int, int>& cntMap)
 {
 	for (map<int, int>::const_iterator it = cntMap.begin(); it != cntMap.end(); ++it)
@@ -31,7 +31,7 @@ int getOddCountNum(const map<int, int>& cntMap)
 			return it->first;
 	}
 
-	return 0;	// ÀÌ·± °æ¿ì´Â ¾øÀ» °ÍÀÓ.
+	return 0;	// ì´ëŸ° ê²½ìš°ëŠ” ì—†ì„ ê²ƒì„.
 }
 
 int main(int argc, char* argv[])

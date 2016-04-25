@@ -9,7 +9,7 @@
 using namespace std;
 
 
-// "¾Ë°í¸®Áò ¹®Á¦ÇØ°á Àü·«" p. 653 Âü°í
+// "ì•Œê³ ë¦¬ì¦˜ ë¬¸ì œí•´ê²° ì „ëžµ" p. 653 ì°¸ê³ 
 vector<int> getPartialMatch(const string& N)
 {
 	int m = N.size();

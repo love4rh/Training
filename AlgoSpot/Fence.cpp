@@ -1,6 +1,5 @@
-// https://algospot.com/judge/problem/read/FENCE
-
 /*
+https://algospot.com/judge/problem/read/FENCE
 3
 7
 7 1 5 9 6 7 3
@@ -9,11 +8,6 @@
 4
 1 8 2 2
 */
-
-#include "./function.h"
-
-#ifdef _FENCE_
-
 #include <fstream>
 
 #include <algorithm>
@@ -54,17 +48,17 @@ int main(int argc, char* argv[])
 
 			if (area.end() == it)
 			{
-				area[fenceHeight[pos]] = 0;	// ¾Æ·¡ ·çÆ¾¿¡¼­ 1ÀÌ ´õÇØÁö¹Ç·Î ¿©±â¼­´Â 1ÀÌ¾î¾ß ÇÔ.
+				area[fenceHeight[pos]] = 0;	// ì•„ëž˜ ë£¨í‹´ì—ì„œ 1ì´ ë”í•´ì§€ë¯€ë¡œ ì—¬ê¸°ì„œëŠ” 1ì´ì–´ì•¼ í•¨.
 
 				it = area.find(fenceHeight[pos]);
 
-				// pos ÀÌÀü¿¡ Áö±Ý ³ôÀÌº¸´Ù Å©°Å³ª °°Àº °ÍÀÌ ¾ó¸¶³ª ÀÖ´Â Áö Å½»ö
+				// pos ì´ì „ì— ì§€ê¸ˆ ë†’ì´ë³´ë‹¤ í¬ê±°ë‚˜ ê°™ì€ ê²ƒì´ ì–¼ë§ˆë‚˜ ìžˆëŠ” ì§€ íƒìƒ‰
 				int i = pos;
 				while (--i >= 0 && fenceHeight[i] >= fenceHeight[pos])
 					it->second += it->first;
 			}
 			
-			// ±âÁ¸¿¡ ÀÖ´ø ¾Öµé Áß¿¡¼­ ³ôÀÌ°¡ Áö±Ý °Í º¸´Ù ÀÛ°Å³ª °°Àº ¾ÖµéÀº ÇÏ³ª¾¿ ´õÇØ Áà¾ß ÇÔ.
+			// ê¸°ì¡´ì— ìžˆë˜ ì• ë“¤ ì¤‘ì—ì„œ ë†’ì´ê°€ ì§€ê¸ˆ ê²ƒ ë³´ë‹¤ ìž‘ê±°ë‚˜ ê°™ì€ ì• ë“¤ì€ í•˜ë‚˜ì”© ë”í•´ ì¤˜ì•¼ í•¨.
 			for (it = area.begin(); it != area.end();)
 			{
 				if (it->first <= fenceHeight[pos])
@@ -94,5 +88,3 @@ int main(int argc, char* argv[])
 
 	return 0;
 }
-
-#endif
