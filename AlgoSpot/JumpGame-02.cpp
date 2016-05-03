@@ -1,15 +1,12 @@
 // https://algospot.com/judge/problem/read/JUMPGAME
 
-#include <fstream>
-
-#include <iomanip>
 #include <iostream>
 
 
 using namespace std;
 
-//istream& in = cin;
-ifstream in("V:\\Work\\Algorithm\\data\\jumpGame.txt");
+istream& in = cin;
+ostream& out = cout;
 
 int main(int argc, char* argv[])
 {
@@ -20,7 +17,7 @@ int main(int argc, char* argv[])
 	while (T--)
 	{
 		int N, step;
-		int board[101][101] = { 1, };
+		bool board[101][101] = { true, };
 
 		in >> N;
 
@@ -29,19 +26,20 @@ int main(int argc, char* argv[])
 			{
 				in >> step;
 				
+				// 이 위치에 올 수 없다면 읽은 step 값은 의미 없으므로 스킵
 				if (!board[y][x])
 					continue;
 
 				// 아래쪽으로 갈 수 있는 위치 마킹
 				if (y + step < N)
-					board[y + step][x] = 1;
+					board[y + step][x] = true;
 				// 오른쪽으로 갈 수 있는 위치 마킹
 				if (x + step < N)
-					board[y][x + step] = 1;
+					board[y][x + step] = true;
 			}
 
 		// 끝점의 값이 1이면 올 수 있는 것임.
-		cout << (board[N - 1][N - 1] ? "YES" : "NO") << "\n";
+		out << (board[N - 1][N - 1] ? "YES" : "NO") << "\n";
 	}
 
 	return 0;
