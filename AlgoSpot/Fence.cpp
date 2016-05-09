@@ -8,8 +8,6 @@ https://algospot.com/judge/problem/read/FENCE
 4
 1 8 2 2
 */
-#include <fstream>
-
 #include <algorithm>
 #include <iomanip>
 #include <iostream>
@@ -20,7 +18,6 @@ https://algospot.com/judge/problem/read/FENCE
 using namespace std;
 
 istream& in = cin;
-// ifstream in("E:\\Work\\Algorithm\\data\\fence.txt");
 
 int fenceHeight[MAX_LIMIT];
 

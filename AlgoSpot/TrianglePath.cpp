@@ -1,30 +1,44 @@
-// https://algospot.com/judge/problem/read/TRIANGLEPATH
+/*
+https://algospot.com/judge/problem/read/TRIANGLEPATH
+2
+5
+6
+1  2
+3  7  4
+9  4  1  7
+2  7  5  9  4
+5
+1
+2 4
+8 16 8
+32 64 32 64
+128 256 128 256 128
 
-#include <fstream>
-#include <iomanip>
+28
+341
+*/
+
+#include <algorithm>
 #include <iostream>
-#include <string>
 
 using namespace std;
 
-#define MAX_LIMIT 100
+const int MAX_LIMIT = 100;
+
+istream& in = cin;
 
 // 삼각형 경로 저장을 위한 전역변수
 int trianglePath[MAX_LIMIT][MAX_LIMIT];
 
-//istream& in = cin;
-ifstream in;
 
 
 int main(int argc, char* argv[])
 {
-	int caseCount = 0, depth = 0;
+	int T = 0, depth = 0;
 
-	in.open("E:\\Work\\Algorithm\\data\\trianglePath.txt");
+	in >> T;
 
-	in >> caseCount;
-
-	while (caseCount--)
+	while (T--)
 	{
 		in >> depth;
 
