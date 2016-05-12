@@ -98,14 +98,6 @@ int main(int argc, char* argv[])
 
 		std::sort(points, points + N);
 
-		/* // search() 테스트
-		out << "c: " << search(Point(-10, -10), 0, N - 1) << "\n";
-		out << "c: " << search(Point(-10, -9), 0, N - 1) << "\n";
-		out << "c: " << search(Point(0, 0), 0, N - 1) << "\n";
-		out << "c: " << search(Point(10, 10), 0, N - 1) << "\n";
-		out << "c: " << search(Point(11, 0), 0, N - 1) << "\n";
-		*/
-
 		minVal = 0x7fffffff;
 		maxVal = -1;
 
