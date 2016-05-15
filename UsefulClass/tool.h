@@ -31,4 +31,7 @@ vector<int> getSuffixArray(const string& s);
 // KMP 알고리즘을 이용한 검색
 vector<int> kmpSearch(const string& H, const string& N);
 
+// 약수 구하기
+vector<int> getDivisors(int n, bool includeSelf);
+
 #endif

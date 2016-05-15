@@ -300,3 +300,32 @@ int bino(int n, int r)
 	return binoCached[n][r] = bino(n - 1, r - 1) + bino(n - 1, r);
 }
 
+// 약수 구하기
+vector<int> getDivisors(int n, bool includeSelf)
+{
+	int to = (int)sqrt(n);
+
+	vector<int> divisors;
+
+	divisors.push_back(1);
+
+	for (int i = 2; i <= to; ++i)
+	{
+		if ((n % i) == 0)
+			divisors.push_back(i);
+	}
+
+	for (int i = divisors.size() - 1; i > 0; --i)
+	{
+		int d = n / divisors[i];
+
+		if (d != divisors[i])
+			divisors.push_back(d);
+	}
+
+	if (includeSelf)
+		divisors.push_back(n);
+
+	return divisors;
+}
+
