@@ -1,7 +1,5 @@
 // https://algospot.com/judge/problem/read/BOARDCOVER
 
-#include <fstream>
-
 #include <iomanip>
 #include <iostream>
 #include <string>
@@ -9,8 +7,8 @@
 
 using namespace std;
 
-//istream& in = cin;
-ifstream in("E:\\Work\\Algorithm\\data\\boardCover.txt");
+istream& in = cin;
+
 
 int H = 0, W = 0;
 int board[21][21];

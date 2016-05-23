@@ -8,12 +8,10 @@
 30 20
 10 10
 10 20
+
+7 7
+30 10
 */
-
-#include "./function.h"
-
-#ifdef __DRAWRECT__
-
 #include <iostream>
 #include <map>
 
@@ -57,5 +55,3 @@ int main(int argc, char* argv[])
 
 	return 0;
 }
-
-#endif
