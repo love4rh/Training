@@ -12,8 +12,10 @@
 
 ### cordova 설치
 ``` $ npm install cordova -g ```
+- npm ERR! 와 같은 오류가 나오면 sudo 권한으로 실행할 것
 - ** cordova 버전 확인 ``` $ cordova -v ``` **
 - Android 나 필요한 환경변수들 설정해야 함.
+- 특정 버전을 설치하고 싶은 경우 ``` $ npm install cordova@3.0.6 -g ```
 
 ### 프로젝트 생성
 **``` $ cordova create hello com.example.hello HelloWorld -d ```**
