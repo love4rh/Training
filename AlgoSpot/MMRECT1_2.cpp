@@ -43,7 +43,7 @@ struct Point
 	Point() : x(0), y(0) {}
 	Point(int tx, int ty) : x(tx), y(ty) {}
 
-	bool operator<(const Point& rhs)
+	bool operator<(const Point& rhs) const
 	{
 		return this->x < rhs.x || (this->x == rhs.x && this->y < rhs.y);
 	}
@@ -85,7 +85,7 @@ int search(Point pt, int low, int high)
 
 int main(int argc, char* argv[])
 {
-	int T = 0, depth = 0;
+	int T = 0;
 
 	in >> T;
 
@@ -135,3 +135,4 @@ int main(int argc, char* argv[])
 
 	return 0;
 }
+
