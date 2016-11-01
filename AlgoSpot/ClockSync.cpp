@@ -68,11 +68,11 @@ bool pressSwitch(int s)
 
 int main(int argc, char* argv[])
 {
-	int caseCount = 0;
+	int T = 0;
 
-	in >> caseCount;
+	in >> T;
 
-	while (caseCount--)
+	while (T--)
 	{
 		for(int i = 0; i < 16; ++i)
 			in >> clockPos[i];

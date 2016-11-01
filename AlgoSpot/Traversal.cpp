@@ -7,8 +7,6 @@
 9 12 16 27 36 54 72
 */
 
-#include <fstream>
-
 #include <algorithm>
 #include <iomanip>
 #include <iostream>
@@ -17,25 +15,25 @@
 using namespace std;
 
 istream& in = cin;
-//ifstream in("V:\\Work\\Algorithm\\data\\MEASURETIME.txt");
+ostream& out = cout;
 
 // [s, e) of ar
-class SliceVector
+class Slice
 {
 public:
-	SliceVector(const vector<int>& ar, int s, int len)
+	Slice(const vector<int>& ar, int s, int len)
 		: _ar(ar), _start(s), _len(len)
 	{
 		//
 	}
 
-	SliceVector(const SliceVector& cp)
+	Slice(const Slice& cp)
 		: _ar(cp._ar), _start(cp._start), _len(cp._len)
 	{
 		//
 	}
 
-	SliceVector(const SliceVector& cp, int s, int len)
+	Slice(const Slice& cp, int s, int len)
 		: _ar(cp._ar), _start(cp._start + s), _len(len)
 	{
 		//
@@ -75,7 +73,7 @@ public:
 };
 
 
-void postOrder(const SliceVector& preOrder, const SliceVector& inOrder, int& level)
+void postOrder(const Slice& preOrder, const Slice& inOrder, int level)
 {
 	if (preOrder.empty() || inOrder.empty())
 		return;
@@ -83,15 +81,15 @@ void postOrder(const SliceVector& preOrder, const SliceVector& inOrder, int& lev
 	int root = preOrder[0];
 	int rootPos = inOrder.find(root);
 
-	level += 1;
-	postOrder( SliceVector(preOrder, 1, rootPos), SliceVector(inOrder, 0, rootPos), level );
-	postOrder( SliceVector(preOrder, rootPos + 1, preOrder.size() - rootPos - 1)
-			 , SliceVector(inOrder, rootPos + 1, inOrder.size() - rootPos - 1), level );
-	level -= 1;
+	postOrder( Slice(preOrder, 1, rootPos)
+			 , Slice(inOrder, 0, rootPos), level + 1 );
 
-	cout << root;
+	postOrder( Slice(preOrder, rootPos + 1, preOrder.size() - rootPos - 1)
+			 , Slice(inOrder, rootPos + 1, inOrder.size() - rootPos - 1), level + 1 );
+
+	out << root;
 	if (level > 0 )
-		cout << " ";
+		out << " ";
 }
 
 
@@ -115,9 +113,8 @@ int main(int argc, char* argv[])
 		for (int i = 0; i < N; ++i)
 			in >> inOrder[i];
 
-		int level = 0;
-		postOrder( SliceVector(preOrder, 0, preOrder.size()), SliceVector(inOrder, 0, inOrder.size()), level );
-		cout << "\n";
+		postOrder( Slice(preOrder, 0, preOrder.size()), Slice(inOrder, 0, inOrder.size()), 0 );
+		out << "\n";
 	}
 
 	return 0;
