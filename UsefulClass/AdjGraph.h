@@ -12,7 +12,7 @@ using namespace std;
 class AdjGraph
 {
 public:
-	// n개의 정접을 갖는 노드 표현.
+	// n개의 정점을 갖는 노드 표현.
 	AdjGraph(int n) : _adj(n, vector<int>()) {}
 
 private:
@@ -102,7 +102,7 @@ public:
 	}
 
 	// 깊이 우선 탐색
-	vector<int> dfsAll(vector<int>& order)
+	vector<int> dfsAll()
 	{
 		vector<int> order;
 		order.reserve(_adj.size());
