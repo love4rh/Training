@@ -112,7 +112,10 @@ int main(int argc, char* argv[])
         in >> K >> s;
 
         // K가 1이면 전체 문자열의 길이가 답임(가장 긴 1회 이상 나오는 단어는 문장 자체이므로)
-        out << solve(s, K) << "\n";
+        if( K == 1 )
+        	out << s.size() << "\n";
+        else
+        	out << solve(s, K) << "\n";
     }
 
     return 0;
