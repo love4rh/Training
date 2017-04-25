@@ -20,7 +20,6 @@ https://algospot.com/judge/problem/read/TRIPATHCNT
 #include <iomanip>
 #include <iostream>
 #include <cstring>
-#include <map>
 
 using namespace std;
 
