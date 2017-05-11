@@ -30,7 +30,7 @@ ostream& out = cout;
 
 const int MAX_LIMIT = 15;
 
-typedef bitset<MAX_LIMIT>    visitType;
+typedef bitset<MAX_LIMIT>    VisitType;
 
 int N = 0;
 double dist[MAX_LIMIT][MAX_LIMIT];
@@ -42,7 +42,7 @@ double cached[MAX_LIMIT][1 << MAX_LIMIT];
 
 
 // 도시 돌아다녀 보기
-double traverse(int here, visitType traversed)
+double traverse(int here, VisitType traversed)
 {
     double& d = cached[here][traversed.to_ulong()];
 
@@ -61,7 +61,9 @@ double traverse(int here, visitType traversed)
     for(int there = 0; there < N; ++there)
     {
         // 이미 가본 도시는 패스
-        if( traversed[there] ) continue;
+        if( traversed[there] )
+        	continue;
+
         d = min(d, dist[here][there] + traverse(there, traversed));
     }
 
@@ -79,6 +81,8 @@ void clearCache()
 
 int main(int argc, char* argv[])
 {
+	std::ios::sync_with_stdio(false);
+
     int T = 0;
 
     in >> T;
@@ -87,20 +91,18 @@ int main(int argc, char* argv[])
         in >> N;
 
         for (int i = 0; i < N; ++i)
-        {
             for (int j = 0; j < N; ++j)
             {
                 in >> dist[i][j];
                 dist[j][i] = dist[i][j];
             }
-        }
 
-        visitType traversed;
+        VisitType traversed;
         double ans = numeric_limits<double>::max();
 
         clearCache();
         for (int i = 0; i < N; ++i)
-        ans = min(ans, traverse(i, traversed));
+            ans = min(ans, traverse(i, traversed));
 
         printf("%.10f\n", ans);
     }

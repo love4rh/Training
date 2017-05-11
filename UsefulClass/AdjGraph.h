@@ -38,7 +38,7 @@ private:
 	void dfs4ts(int here, vector<int>& order, vector<int>& seen)
 	{
 		seen[here] = 1;
-		for (int there = 0; there < _adj.size(); ++there)
+		for (int there = 0; there < _adj[here].size(); ++there)
 		{
 			if (_adj[here][there] && !seen[there])
 				dfs4ts(there, order, seen);
