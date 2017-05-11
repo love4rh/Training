@@ -17,15 +17,15 @@ private:
 	vector<vector<pair<int, int>>> _adj;
 
 public:
-	// Á¤Á¡ ¿¬°áÇÏ¿© ±×·¡ÇÁ ±¸¼º
-	// here --weight--> thereÀÓ
+	// ì •ì  ì—°ê²°í•˜ì—¬ ê·¸ë˜í”„ êµ¬ì„±
+	// here --weight--> thereì„
 	void link(int here, int there, int weight)
 	{
 		_adj[here].push_back(pair<int, int>(there, weight));
 	}
 
-	// ´ÙÀÍ½ºÆ®¶óÀÇ ÃÖ´Ü °Å¸® ¾Ë°í¸®Áò
-	// ½ÃÀÛÁ¤Á¡ s¿¡¼­ºÎÅÍ ´Ù¸¥ Á¤Á¡µé±îÀÇ ÃÖ´Ü °Å¸®¸¦ °è»êÇÔ.
+	// ë‹¤ìµìŠ¤íŠ¸ë¼ì˜ ìµœë‹¨ ê±°ë¦¬ ì•Œê³ ë¦¬ì¦˜
+	// ì‹œì‘ì •ì  sì—ì„œë¶€í„° ë‹¤ë¥¸ ì •ì ë“¤ê¹Œì˜ ìµœë‹¨ ê±°ë¦¬ë¥¼ ê³„ì‚°í•¨.
 	vector<int> dijkstra(int s)
 	{
 		vector<int> dist(_adj.size(), numeric_limits<int>::max());
@@ -41,17 +41,17 @@ public:
 
 			pq.pop();
 
-			// Áö±İ ²¨³½ °Íº¸Å¸ ´õ ÂªÀº °æ·Î¸¦ ¾Ë°í ÀÖ´Ù¸é Áö±İ ²¨³½ °ÍÀ» ¹«½Ã
+			// ì§€ê¸ˆ êº¼ë‚¸ ê²ƒë³´íƒ€ ë” ì§§ì€ ê²½ë¡œë¥¼ ì•Œê³  ìˆë‹¤ë©´ ì§€ê¸ˆ êº¼ë‚¸ ê²ƒì„ ë¬´ì‹œ
 			if (dist[here] < cost)
 				continue;
 
-			// ÀÎÀüÇÑ Á¤Á¡µéÀ» °Ë»ç
+			// ì¸ì „í•œ ì •ì ë“¤ì„ ê²€ì‚¬
 			for (int i = 0; i < _adj[here].size(); ++i)
 			{
 				int there = _adj[here][i].first;
 				int nextDist = cost + _adj[here][i].second;
 
-				// ´õ ÂªÀº °æ·Î¸¦ ¹ß°ßÇÏ¸é, dist[]¸¦ °»½ÅÇÏ°í ¿ì¼±¼øÀ§ Å¥¿¡ ³Ö´Â´Ù.
+				// ë” ì§§ì€ ê²½ë¡œë¥¼ ë°œê²¬í•˜ë©´, dist[]ë¥¼ ê°±ì‹ í•˜ê³  ìš°ì„ ìˆœìœ„ íì— ë„£ëŠ”ë‹¤.
 				if (dist[there] > nextDist)
 				{
 					dist[there] = nextDist;
@@ -63,7 +63,7 @@ public:
 		return dist;
 	}
 
-	// ¿ì¼±¼øÀ§ Å¥¸¦ ÀÌ¿ëÇÏÁö ¾Ê´Â ´ÙÀÍ½ºÆ®¶ó ¾Ë°í¸®Áò
+	// ìš°ì„ ìˆœìœ„ íë¥¼ ì´ìš©í•˜ì§€ ì•ŠëŠ” ë‹¤ìµìŠ¤íŠ¸ë¼ ì•Œê³ ë¦¬ì¦˜
 	vector<int> dijkstra2(int s)
 	{
 		vector<bool> visited(_adj.size(), false);
@@ -73,7 +73,7 @@ public:
 
 		while (1)
 		{
-			// ¾ÆÁ÷ ¹æ¹®ÇÏÁö ¾ÊÀº Á¤Á¡ Áß °¡Àå °¡±î¿î Á¤Á¡À» Ã£´Â´Ù.
+			// ì•„ì§ ë°©ë¬¸í•˜ì§€ ì•Šì€ ì •ì  ì¤‘ ê°€ì¥ ê°€ê¹Œìš´ ì •ì ì„ ì°¾ëŠ”ë‹¤.
 			int here, closest = numeric_limits<int>::max();
 			for (int i = 0; i < _adj.size(); ++i)
 			{
@@ -87,7 +87,7 @@ public:
 			if (closest == numeric_limits<int>::max())
 				break;
 
-			// °¡Àå °¡±î¿î Á¤Á¡À» ¹æ¹®ÇÑ´Ù.
+			// ê°€ì¥ ê°€ê¹Œìš´ ì •ì ì„ ë°©ë¬¸í•œë‹¤.
 			visited[here] = true;
 			for (int i = 0; i < _adj[here].size(); ++i)
 			{
@@ -103,7 +103,7 @@ public:
 		return dist;
 	}
 
-	// ½ÃÀÛÁ¤Á¡ s¿¡¼­ºÎÅÍ ´Ù¸¥ Á¤Á¡µé±îÀÇ ÃÖ´Ü °Å¸®¸¦ °è»êÇÔ. À½¼ö °¡ÁßÄ¡¸¦ °í·ÁÇÔ
+	// ì‹œì‘ì •ì  sì—ì„œë¶€í„° ë‹¤ë¥¸ ì •ì ë“¤ê¹Œì˜ ìµœë‹¨ ê±°ë¦¬ë¥¼ ê³„ì‚°í•¨. ìŒìˆ˜ ê°€ì¤‘ì¹˜ë¥¼ ê³ ë ¤í•¨
 	vector<int> bellmanFord(int s)
 	{
 		vector<int> upper(_adj.size(), numeric_limits<int>::max());

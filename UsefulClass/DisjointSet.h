@@ -7,7 +7,7 @@
 using namespace std;
 
 
-// »óÈ£ ¹èÅ¸Àû ÁýÇÕ ±¸Çö
+// ìƒí˜¸ ë°°íƒ€ì  ì§‘í•© êµ¬í˜„
 class DisjointSet
 {
 public:
@@ -22,16 +22,16 @@ public:
 	}
 
 private:
-	// ÇØ´ç À§Ä¡ÀÇ ³ëµåÀÇ ºÎ¸ð ³ëµå Á¤º¸
+	// í•´ë‹¹ ìœ„ì¹˜ì˜ ë…¸ë“œì˜ ë¶€ëª¨ ë…¸ë“œ ì •ë³´
 	vector<int>	_parent;
 
-	// Æ®¸®ÀÇ ±íÀÌ°¡ ±í¾îÁö´Â °ÍÀ» ¹æÁöÇÏ±â À§ÇÑ ºñ±³ °ª.
-	// ¿©±â¼­´Â ³ëµåÀÇ ±íÀÌ¸¦ Rank·Î ÀÌ¿ëÇÔ.
+	// íŠ¸ë¦¬ì˜ ê¹Šì´ê°€ ê¹Šì–´ì§€ëŠ” ê²ƒì„ ë°©ì§€í•˜ê¸° ìœ„í•œ ë¹„êµ ê°’.
+	// ì—¬ê¸°ì„œëŠ” ë…¸ë“œì˜ ê¹Šì´ë¥¼ Rankë¡œ ì´ìš©í•¨.
 	vector<int>	_rank;
 
 public:
-	// u°¡ ¼ÓÇÑ Æ®¸®ÀÇ ·çÆ® ¹øÈ£¸¦ ¹ÝÈ¯ÇÑ´Ù.
-	// find(v) == find(v) --> u, v´Â °°Àº ±×·ì¿¡ ¼ÓÇÑ ¿ø¼ÒÀÓ.
+	// uê°€ ì†í•œ íŠ¸ë¦¬ì˜ ë£¨íŠ¸ ë²ˆí˜¸ë¥¼ ë°˜í™˜í•œë‹¤.
+	// find(v) == find(v) --> u, vëŠ” ê°™ì€ ê·¸ë£¹ì— ì†í•œ ì›ì†Œìž„.
 	int find(int u)
 	{
 		if (u == _parent[u]) return u;
@@ -39,12 +39,12 @@ public:
 		return _parent[u] = find(_parent[u]);
 	}
 
-	// u°¡ ¼ÓÇÑ Æ®¸®¿Í v°¡ ¼ÓÇÑ Æ®¸®¸¦ ÇÕÄ§ --> °°Àº ±×·ìÀ¸·Î ¸¸µê
+	// uê°€ ì†í•œ íŠ¸ë¦¬ì™€ vê°€ ì†í•œ íŠ¸ë¦¬ë¥¼ í•©ì¹¨ --> ê°™ì€ ê·¸ë£¹ìœ¼ë¡œ ë§Œë“¦
 	void merge(int u, int v)
 	{
 		u = find(u); v = find(v);
 
-		// ÀÌ¹Ì °°Àº ±×·ìÀÌ¹Ç·Î ¸®ÅÏ
+		// ì´ë¯¸ ê°™ì€ ê·¸ë£¹ì´ë¯€ë¡œ ë¦¬í„´
 		if (u == v) return;
 
 		if (_rank[u] > _rank[v]) swap(u, v);

@@ -7,7 +7,7 @@
 using namespace std;
 
 
-// ¹è¿­ÀÇ ±¸°£ ÃÖ¼Ò Äõ¸®¸¦ ÇØ°áÇÏ±â À§ÇÑ ±¸°£ Æ®¸®
+// ë°°ì—´ì˜ êµ¬ê°„ ìµœì†Œ ì¿¼ë¦¬ë¥¼ í•´ê²°í•˜ê¸° ìœ„í•œ êµ¬ê°„ íŠ¸ë¦¬
 template<typename ResultType, typename DataType, typename Calculator> class RMQ
 {
 public:
@@ -20,13 +20,13 @@ public:
 	}
 
 private:
-	// ¹è¿­ÀÇ ±æÀÌ
+	// ë°°ì—´ì˜ ê¸¸ì´
 	int _n;
 
-	// °¢ ±¸°£ÀÇ °á°ú
+	// ê° êµ¬ê°„ì˜ ê²°ê³¼
 	vector<ResultType> _rangeMin;
 
-	// Calculator´Â ResultType operator()(ResultType, ResultType) ¿¬»êÀÚ°¡ ±¸ÇöµÇ¾î ÀÖ¾î¾ß ÇÔ.
+	// CalculatorëŠ” ResultType operator()(ResultType, ResultType) ì—°ì‚°ìê°€ êµ¬í˜„ë˜ì–´ ìˆì–´ì•¼ í•¨.
 	Calculator _calc;
 
 private:
@@ -45,7 +45,7 @@ private:
 	ResultType query(int left, int right, int node, int nodeLeft, int nodeRight)
 	{
 		if (right < nodeLeft || nodeRight < left)
-			return ResultType(numeric_limits<DataType>::max());	// TODO °ªÀÇ ÇüÅÂ¿¡ µû¶ó ¹Ù²î¾î¾ß ÇÔ.
+			return ResultType(numeric_limits<DataType>::max());	// TODO ê°’ì˜ í˜•íƒœì— ë”°ë¼ ë°”ë€Œì–´ì•¼ í•¨.
 
 		if (left <= nodeLeft && nodeRight <= right)
 			return _rangeMin[node];

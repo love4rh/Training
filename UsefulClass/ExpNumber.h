@@ -2,7 +2,7 @@
 #define _EXPNUMBER_
 
 
-// E^d + r ¿Í °°ÀÌ Å« ¼ö¸¦ Ç¥ÇöÇÏ±â À§ÇÑ Å¬·¡½º
+// E^d + r ì™€ ê°™ì´ í° ìˆ˜ë¥¼ í‘œí˜„í•˜ê¸° ìœ„í•œ í´ë˜ìŠ¤
 class ExpNumber
 {
 public:
@@ -25,10 +25,10 @@ public:
 	static const int _exp = 1000000007;
 
 private:
-	// _exp·Î ³ª´« ¸ò
+	// _expë¡œ ë‚˜ëˆˆ ëª«
 	long long _d;
 
-	// _exp·Î ³ª´« ³ª¸ÓÁö
+	// _expë¡œ ë‚˜ëˆˆ ë‚˜ë¨¸ì§€
 	long long _r;
 
 public:

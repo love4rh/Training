@@ -15,7 +15,7 @@ private:
 	vector<_VT>		_tree;
 
 public:
-	// [0, pos] ±¸°£ÀÇ ÇÕÀ» ¹İÈ¯
+	// [0, pos] êµ¬ê°„ì˜ í•©ì„ ë°˜í™˜
 	_VT sum(int pos)
 	{
 		pos += 1;
@@ -30,7 +30,7 @@ public:
 		return ret;
 	}
 
-	// pos À§Ä¡¸¦ Æ÷ÇÔÇÏ´Â ¿µ¿ª¿¡ °ªÀ» ´õÇÔ.
+	// pos ìœ„ì¹˜ë¥¼ í¬í•¨í•˜ëŠ” ì˜ì—­ì— ê°’ì„ ë”í•¨.
 	void add(int pos, _VT val)
 	{
 		pos += 1;

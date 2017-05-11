@@ -7,7 +7,7 @@
 using namespace std;
 
 
-// Treap¿¡¼­ »ç¿ëÇÒ ³ëµå °´Ã¼ Á¤ÀÇ
+// Treapì—ì„œ ì‚¬ìš©í•  ë…¸ë“œ ê°ì²´ ì •ì˜
 template<typename KeyType> class TNode
 {
 public:
@@ -76,7 +76,7 @@ public:
 };
 
 
-// Æ®¸³
+// íŠ¸ë¦½
 template<typename KeyType> class Treap
 {
 public:
@@ -92,7 +92,7 @@ private:
 	TreapNode*		_root;
 
 private:
-	// key ¹Ì¸¸ÀÇ °ª°ú ÀÌ»óÀÇ °ªÀ» °®´Â µÎ °³ÀÇ Æ®¸³À¸·Î ºĞ¸®
+	// key ë¯¸ë§Œì˜ ê°’ê³¼ ì´ìƒì˜ ê°’ì„ ê°–ëŠ” ë‘ ê°œì˜ íŠ¸ë¦½ìœ¼ë¡œ ë¶„ë¦¬
 	NodePair split(TreapNode* root, KeyType key)
 	{
 		if (root == NULL)
@@ -217,13 +217,13 @@ public:
 		}
 	}
 
-	// ³ëµå °³¼ö ¹İÈ¯
+	// ë…¸ë“œ ê°œìˆ˜ ë°˜í™˜
 	int size() const
 	{
 		return _root == NULL ? 0 : _root->size();
 	};
 
-	// key ¹Ì¸¸ÀÇ °ª°ú ÀÌ»óÀÇ °ªÀ» °®´Â µÎ °³ÀÇ Æ®¸³À¸·Î ºĞ¸®
+	// key ë¯¸ë§Œì˜ ê°’ê³¼ ì´ìƒì˜ ê°’ì„ ê°–ëŠ” ë‘ ê°œì˜ íŠ¸ë¦½ìœ¼ë¡œ ë¶„ë¦¬
 	NodePair split(KeyType key)
 	{
 		return split(_root, key);
@@ -236,7 +236,7 @@ public:
 		return *this;
 	}
 
-	// µÎ Æ®¸®¸¦ ÇÏ³ª·Î ÇÕÄ¡±â. ¸ÓÁö ÈÄ a¿Í bÀÇ root´Â ÃÊ±âÈ­µÊ.
+	// ë‘ íŠ¸ë¦¬ë¥¼ í•˜ë‚˜ë¡œ í•©ì¹˜ê¸°. ë¨¸ì§€ í›„ aì™€ bì˜ rootëŠ” ì´ˆê¸°í™”ë¨.
 	static Treap<KeyType> merge(Treap<KeyType>& a, Treap<KeyType>& b)
 	{
 		TreapNode* r = merge(a._root, b._root);
@@ -253,7 +253,7 @@ public:
 		return *this;
 	}
 
-	// K¹øÂ° À§Ä¡ÀÇ °ª ¹İÈ¯. 1-based
+	// Kë²ˆì§¸ ìœ„ì¹˜ì˜ ê°’ ë°˜í™˜. 1-based
 	KeyType kth(int k)
 	{
 		if (_root == NULL )
@@ -266,7 +266,7 @@ public:
 		return n->key();
 	}
 
-	// key º¸´Ù ÀÛÀº °ªÀ» °®´Â ³ëµå °³¼ö ¹İÈ¯.
+	// key ë³´ë‹¤ ì‘ì€ ê°’ì„ ê°–ëŠ” ë…¸ë“œ ê°œìˆ˜ ë°˜í™˜.
 	int countLessThan(KeyType key)
 	{
 		return countLessThan(_root, key);

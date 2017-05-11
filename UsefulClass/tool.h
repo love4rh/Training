@@ -9,29 +9,29 @@
 using namespace std;
 
 
-// Greatest Common Devider (ÃÖ´ë°ø¾à¼ö ±¸ÇÏ±â)
+// Greatest Common Devider (ìµœëŒ€ê³µì•½ìˆ˜ êµ¬í•˜ê¸°)
 int gcd(int a, int b);
 
-// ÃÖ´ë°ø¹è¼ö ±¸ÇÏ±â
+// ìµœëŒ€ê³µë°°ìˆ˜ êµ¬í•˜ê¸°
 int lcm(int a, int b);
 
-// ¼ÒÀÎ¼ö ºĞÇØ
+// ì†Œì¸ìˆ˜ ë¶„í•´
 vector<int> factor(int n);
 
-// ¼Ò¼öÀÎÁö ¿©ºÎ ¹İÈ¯
+// ì†Œìˆ˜ì¸ì§€ ì—¬ë¶€ ë°˜í™˜
 bool isPrime(long number);
 
-// KMP ¾Ë°í¸®ÁòÀ» ÀÌ¿ëÇÑ ºÎºĞ ÀÏÄ¡ Å×ÀÌºí »ı¼º
-// pi[] °ªÀ» °è»êÇÏ¿© ¹İÈ¯ÇÔ.
+// KMP ì•Œê³ ë¦¬ì¦˜ì„ ì´ìš©í•œ ë¶€ë¶„ ì¼ì¹˜ í…Œì´ë¸” ìƒì„±
+// pi[] ê°’ì„ ê³„ì‚°í•˜ì—¬ ë°˜í™˜í•¨.
 vector<int> getPartialMatch(const string& N);
 
-// Á¢¹Ì»ç ¹è¿­À» °è»ê
+// ì ‘ë¯¸ì‚¬ ë°°ì—´ì„ ê³„ì‚°
 vector<int> getSuffixArray(const string& s);
 
-// KMP ¾Ë°í¸®ÁòÀ» ÀÌ¿ëÇÑ °Ë»ö
+// KMP ì•Œê³ ë¦¬ì¦˜ì„ ì´ìš©í•œ ê²€ìƒ‰
 vector<int> kmpSearch(const string& H, const string& N);
 
-// ¾à¼ö ±¸ÇÏ±â
+// ì•½ìˆ˜ êµ¬í•˜ê¸°
 vector<int> getDivisors(int n, bool includeSelf);
 
 #endif
