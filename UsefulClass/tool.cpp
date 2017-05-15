@@ -300,6 +300,26 @@ int bino(int n, int r)
 	return binoCached[n][r] = bino(n - 1, r - 1) + bino(n - 1, r);
 }
 
+
+int comb[30][30];
+
+void calcCombination()
+{
+    memset(comb, 0, sizeof(comb));
+
+    comb[0][0] = 1;
+
+    for(int i = 1; i < 30; ++i)
+    {
+        comb[i][0] = 1;
+
+        for(int j = 1; j <= i; ++j)
+        {
+            comb[i][j] = comb[i - 1][j - 1] + comb[i - 1][j];
+        }
+    }
+}
+
 // 약수 구하기
 vector<int> getDivisors(int n, bool includeSelf)
 {
