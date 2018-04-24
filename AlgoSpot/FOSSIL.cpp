@@ -91,14 +91,14 @@ double calcHeight(double x)
     for(int i = 0; i < (int) upper.size(); ++i)
     {
         if( isIn(upper[i].first, upper[i].second, x) )
-        	upperMin = min(upperMin, clacY(upper[i].first, upper[i].second, x));
+            upperMin = min(upperMin, clacY(upper[i].first, upper[i].second, x));
     }
 
     // lower 라인들의 Y축 최대값
     for(int i = 0; i < (int) lower.size(); ++i)
     {
         if( isIn(lower[i].first, lower[i].second, x) )
-        	lowerMax = max(lowerMax, clacY(lower[i].first, lower[i].second, x));
+            lowerMax = max(lowerMax, clacY(lower[i].first, lower[i].second, x));
     }
 
     return upperMin - lowerMax;
@@ -107,30 +107,37 @@ double calcHeight(double x)
 // [low, high]: 곂치는 X축의 범위
 double solve(double low, double high)
 {
-	if( low > high )
-		return 0;
-
     double l, h, g;
+    double hl, hh, height = 0;
 
     // [low, high]을 삼등분하여 바이너리 검색 비슷하게 가장 큰 값을 찾아 나감.
-    while( high - low > 1e-12 )
+    while(high - low > 1e-12 )
     {
         g = (high - low) / 3.0;
         l = g + low;
         h = l + g;
 
-        if( calcHeight(l) < calcHeight(h) )
+        hl = calcHeight(l);
+        hh = calcHeight(h);
+
+        if( hl < hh )
+        {
             low = l;
+            height = max(height, hh);
+        }
         else
+        {
             high = h;
+            height = max(height, hl);
+        }
     }
 
-    return max(0.0, calcHeight(high));
+    return height;
 }
 
 int main(int argc, char* argv[])
 {
-	std::ios::sync_with_stdio(false);
+    std::ios::sync_with_stdio(false);
 
     int T;
 
@@ -147,7 +154,7 @@ int main(int argc, char* argv[])
 
         int flower = -1;
         Point p0, p1, p2;
-        double minX[2], maxX[2];
+        double minX[2], maxX[2], minY[2], maxY[2];
 
         // 위쪽, 아래쪽 선분을 찾아 계산할 때 영역을 구분할 필요가 없음.
         for(int i = 0; i < n + m; ++i)
@@ -164,11 +171,14 @@ int main(int argc, char* argv[])
 
                 p0 = p1 = p2;
                 minX[flower] = maxX[flower] = p2.x;
+                minY[flower] = maxY[flower] = p2.y;
                 continue;
             }
 
             minX[flower] = min(minX[flower], p2.x);
             maxX[flower] = max(maxX[flower], p2.x);
+            minY[flower] = min(minY[flower], p2.y);
+            maxY[flower] = max(maxY[flower], p2.y);
 
             assignUpDown(p1, p2);
             p1 = p2;
@@ -176,8 +186,19 @@ int main(int argc, char* argv[])
         assignUpDown(p1, p0);
 
         // 한 영역의 최대값이 다른 영역의 최소값 보다 작거나 같으면 곂치는 영역이 없는 것임.
-        // 즉, 두영역의 최대값의 최소값이 최소값의 최대값 보다 작거나 같으면 곂치지 않음
-        printf("%.10f\n", solve(max(minX[0], minX[1]), min(maxX[0], maxX[1])) );
+        // 즉,두영역의 최대값의 최소값이 최소값의 최대값 보다 작거나 같으면 곂치지 않음
+        double overlapX1 = max(minX[0], minX[1]);
+        double overlapX2 = min(maxX[0], maxX[1]);
+
+        double result = 0.0;
+
+        if( overlapX2 > overlapX1
+            && (min(maxY[0], maxY[1]) > max(minY[0], minY[1])) )
+        {
+            result = solve(overlapX1, overlapX2);
+        }
+
+        printf("%.10f\n", result);
     }
 
     return 0;
