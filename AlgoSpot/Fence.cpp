@@ -7,81 +7,89 @@ https://algospot.com/judge/problem/read/FENCE
 1 4 4 4 4 1 1
 4
 1 8 2 2
+
+20
+16
+8
 */
 #include <algorithm>
 #include <iomanip>
 #include <iostream>
 #include <map>
 
-#define MAX_LIMIT 20000
+#define MAX_LIMIT 20001
 
 using namespace std;
 
 istream& in = cin;
+ostream& out = cout;
 
-int fenceHeight[MAX_LIMIT];
+int height[MAX_LIMIT];
 
 
-int main(int argc, char* argv[])
+int main()
 {
-	int caseCount = 0, num = 0;
+    std::ios::sync_with_stdio(false);
 
-	in >> caseCount;
+    int T = 0, N = 0;
 
-	while (caseCount--)
-	{	
-		in >> num;
+    in >> T;
 
-		int pos = 0;
-		int maxArea = 0;
+    while( T-- )
+    {
+        in >> N;
 
-		map<int, int> area;
+        int maxArea = 0;
 
-		while (num--)
-		{
-			in >> fenceHeight[pos];
+        map<int, int> area;  // Height --> area
 
-			map<int, int>::iterator it = area.find(fenceHeight[pos]);
+        for(int p = 0; p < N; ++p)
+        {
+            in >> height[p];
 
-			if (area.end() == it)
-			{
-				area[fenceHeight[pos]] = 0;	// 아래 루틴에서 1이 더해지므로 여기서는 1이어야 함.
+            map<int, int>::iterator it = area.find(height[p]);
 
-				it = area.find(fenceHeight[pos]);
+            // 처음 나온 높이라면,
+            if( area.end() == it )
+            {
+                area[height[p]] = 0;  // 아래 루틴에서 1이 더해지므로 여기서는 1이어야 함.
 
-				// pos 이전에 지금 높이보다 크거나 같은 것이 얼마나 있는 지 탐색
-				int i = pos;
-				while (--i >= 0 && fenceHeight[i] >= fenceHeight[pos])
-					it->second += it->first;
-			}
-			
-			// 기존에 있던 애들 중에서 높이가 지금 것 보다 작거나 같은 애들은 하나씩 더해 줘야 함.
-			for (it = area.begin(); it != area.end();)
-			{
-				if (it->first <= fenceHeight[pos])
-				{
-					it->second += it->first;
-					maxArea = max(maxArea, it->second);
+                it = area.find(height[p]);
 
-					++it;
-				}
-				else
-				{
-					maxArea = max(maxArea, it->second);
+                // pos 이전에 지금 높이보다 크거나 같은 것이 얼마나 있는 지 탐색
+                int i = p;
+                while( --i >= 0 && height[i] >= height[p] )
+                    it->second += height[p];
+            }
 
-					map<int, int>::iterator dit = it++;
-					area.erase(dit);
-				}
-			}
+            // 기존에 있던 애들 중에서 높이가 지금 것보다 작거나 같은 애들은 하나씩 더해 줘야 함.
+            for(it = area.begin(); it != area.end();)
+            {
+                if( it->first <= height[p] )
+                {
+                    it->second += it->first;
+                    maxArea = max(maxArea, it->second);
+                    ++it;
+                }
+                else
+                {
+                    maxArea = max(maxArea, it->second);
 
-			pos += 1;
-		}
+                    map<int, int>::iterator dit = it++;
+                    area.erase(dit);
+                }
+            }
+        }
 
-		for (map<int, int>::iterator it = area.begin(); it != area.end(); ++it)
-			maxArea = max(maxArea, it->second);
+        for(map<int, int>::iterator it = area.begin();
+            it != area.end();
+            ++it)
+        {
+            maxArea = max(maxArea, it->second);
+        }
 
-		cout << maxArea << "\n";
-	}
+        out << maxArea << "\n";
+    }
 
-	return 0;
+    return 0;
 }
