@@ -59,7 +59,7 @@ int main(int argc, char* argv[])
         {
             for(int j = i + 1; j <= N; ++j)
             {
-            R[0] = 0;
+                R[0] = 0;
                 for(int k = 0; k < N; ++k)
                 {
                     // k번째 행의 i열에서 (j - 1)열까지의 합의 누적 계산
